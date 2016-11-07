@@ -1,24 +1,18 @@
 <!DOCTYPE HTML>  
 <html>
 <head>
-<style>
-.error {color: #FF0000;}
-</style>
 </head>
 <body>  
 
 <?php
 // define variables and set to empty values
-$nameErr = $emailErr = $genderErr = "";
-$name = $email = $gender = "";
+$name = $email = $gender = $website = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
-    $nameErr = "Name is required";
-  } else {
-    $name = test_input($_POST["name"]);
-  }
-  
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $website = test_input($_POST["website"]);
+  $gender = test_input($_POST["gender"]);
 }
 
 function test_input($data) {
@@ -30,12 +24,12 @@ function test_input($data) {
 ?>
 
 <h2>PHP Form Validation Example</h2>
-<p><span class="error">* required field.</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   Name: <input type="text" name="name">
-  <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
   E-mail: <input type="text" name="email">
+  <br><br>
+  Website: <input type="text" name="website">
   <br><br>
   Gender:
   <input type="radio" name="gender" value="female">Female
@@ -49,6 +43,8 @@ echo "<h2>Your Input:</h2>";
 echo $name;
 echo "<br>";
 echo $email;
+echo "<br>";
+echo $website;
 echo "<br>";
 echo $gender;
 ?>
