@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script type="text/javascript">
+function validate() {
+    if (validatePrice(document.form.price) && 
+        validatePrice(document.form.price2) && 
+        validatePrice(document.form.price3) && 
+        validatePrice(document.form.price4) && 
+        validatePrice(document.form.price5))
+       return true;
+    else
+       return false;
+}
+
+function validatePrice(price)
+{
+    if (price.value.trim() === "") {
+        alert("Please enter a price");
+        price.focus();
+        return false;
+    }
+    if (price.value !== "") {
+        if (! (/^\d*(?:\.\d{0,2})?$/.test(price.value))) {
+            alert("Please enter a valid price");
+            price.focus();
+            return false;
+        }
+    }
+    return true;       
+}
+</script>
+
+</body>
+</html>
